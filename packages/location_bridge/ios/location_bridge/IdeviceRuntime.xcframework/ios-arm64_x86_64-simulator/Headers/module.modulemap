@@ -1,0 +1,4 @@
+module IdeviceRuntime {
+  header "idevice.h"
+  export *
+}

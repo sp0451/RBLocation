@@ -1,0 +1,10 @@
+include: package:flutter_lints/flutter.yaml
+
+# Get CLI emits uppercase route names; keep its generated naming convention.
+analyzer:
+  errors:
+    constant_identifier_names: ignore
+  exclude:
+    - build/**
+    - android/**
+    - ios/**

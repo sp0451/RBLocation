@@ -1,0 +1,50 @@
+{
+  "builtOnClientDate": "2026-10-20",
+  "ideviceCommit": "e98264c4194e6980173c576ac79a58adce95492b",
+  "patchSourceCommit": "e475b071ef092090e459836d1c4c48bc89f490b8",
+  "rust": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "xcode": "27.0 (27A266a)",
+  "sdk": "iPhoneOS 27.0",
+  "minimumDeploymentTarget": "27.0",
+  "features": [
+    "ring",
+    "remote_pairing",
+    "tunnel_tcp_stack",
+    "dvt",
+    "location_simulation"
+  ],
+  "cargoArgs": [
+    "build",
+    "--offline",
+    "--locked",
+    "--release",
+    "--no-default-features",
+    "-p",
+    "idevice-ffi"
+  ],
+  "targets": [
+    "aarch64-apple-ios",
+    "aarch64-apple-ios-sim",
+    "x86_64-apple-ios"
+  ],
+  "strip": "xcrun strip -S",
+  "verified": [
+    "arm64 device and arm64/x86_64 simulator release builds",
+    "Swift iOS 27 typecheck with -warnings-as-errors",
+    "clang device FFI header/archive link",
+    "Rust pre-cancellation repeatability and null output unit test",
+    "root Flutter debug unsigned device build",
+    "Swift pairing attempt gate: current, cancellation, retry, reused ID and repeated teardown"
+  ],
+  "notVerified": [
+    "device pairing",
+    "device tunnel/DVT handshake",
+    "set/clear protocol on device",
+    "Core Location observation on device",
+    "other App location observation",
+    "background and lock",
+    "cellular reconnection"
+  ],
+  "commandEvidence": "DVT set/clear writes are sent, not acknowledged",
+  "hashManifest": "artifacts/ios/idevice-sha256.txt"
+}
