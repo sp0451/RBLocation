@@ -34,7 +34,7 @@
 | --- | --- | --- |
 | Flutter / Dart | 本机 SDK 3.44.2 stable / 3.12.2；项目 Dart 约束 `^3.12.2` | 先以此为开发基线，升级时单独核实插件及双端构建 |
 | Xcode | 本机 27.0 | iOS 真机能力仍需验证，安装工具链不代表协议可用 |
-| iOS deployment target | 已配置 27.0 | 与首期原型、插件和 Rust 目标保持一致；其他系统版本未验证 |
+| iOS deployment target | 已改为 26.0 | 仅代表最低安装目标；26.0 尚未真机验证，当前定位引擎仍要求 iOS 27+ |
 | Android | 当前 Flutter 默认 minSdk 24、compileSdk 36、targetSdk 36 | 插件接入后重新核对，目标设备/API 版本进入真机记录 |
 | iOS 首测设备 | iPhone 16 Pro / iOS 27.0.1 | Mac 辅助 A/B/恢复通过；手机端有用户成功反馈 |
 

@@ -4,7 +4,7 @@
 
 ## 1. 工程基线与选择原则
 
-当前本机基线为 Flutter 3.44.2 stable / Dart 3.12.2，根工程约束为 `sdk: ^3.12.2`。Android 首期基线为 minSdk 24、compileSdk 36、targetSdk 36、Build Tools 36.1.0；iOS 首期定位原型面向 iOS 27.0+，首测 iPhone 16 Pro / iOS 27.0.1。iOS 宿主、插件与 Rust 已同步配置 27.0。
+当前本机基线为 Flutter 3.44.2 stable / Dart 3.12.2，根工程约束为 `sdk: ^3.12.2`。Android 首期基线为 minSdk 24、compileSdk 36、targetSdk 36、Build Tools 36.1.0；iOS 宿主和插件 deployment target 为 26.0，Rust 构建脚本也已配置为 26.0，但仓库内现有 XCFramework 仍以 27.0 为最低版本，需用固定工具链重建。首测设备仍为 iPhone 16 Pro / iOS 27.0.1。部署目标不代表定位功能已兼容 iOS 26；当前原生定位引擎的本机配对和连接仍受 iOS 27+ 运行时门槛限制。
 
 优先使用 Flutter 官方维护的基础插件，状态管理、依赖注入和路由统一采用用户指定的 **`get: ^4.7.3`**。按功能阶段引入依赖，不先加入整套网络、数据库和代码生成框架。下文最低约束仅列已核实的发布包、包页面、版本列表或 changelog 明文；“未单列”表示本轮核对页面没有找到单独数值，不表示没有约束。最终以选定版本发布包的 `pubspec.yaml`、传递依赖、原生配置和实际构建为准。
 
@@ -26,7 +26,7 @@
 | --- | --- | --- | --- | --- |
 | `get` | **`^4.7.3`，已接入，锁定 4.7.3** | `GetxController` + Rx/`Obx` 状态；`Bindings` 依赖注入；`GetMaterialApp`、`GetPage`、命名路由 | 4.7.3 发布包：Dart ≥2.15.0 <4.0.0；Flutter ≥3.13.0；未单列原生系统下限 | MIT；[4.7.3 包说明](https://pub.dev/packages/get/versions/4.7.3)、[官方仓库](https://github.com/jonataslaw/getx) |
 | `pigeon` | 开发依赖精确 `29.0.10`，已生成三端通道 | 生成 Dart ↔ Swift/Kotlin 的类型化通道；首期使用 Platform Channels 模式 | Flutter ≥3.41 / Dart ≥3.11；各原生目标需构建验证 | BSD-3-Clause；[说明及兼容要求](https://pub.dev/packages/pigeon)、[29.0.3 起的 SDK 基线](https://pub.dev/packages/pigeon/changelog) |
-| 自研 `location_bridge` | 仓库内本地包，随应用版本管理 | 提供稳定能力、配对交互、会话命令、状态事件和错误模型 | 由本项目声明 Android 24+ / iOS 定位原型 27.0+；真机验证前不扩展支持范围 | 自有代码；接口见 [架构](architecture.md) |
+| 自研 `location_bridge` | 仓库内本地包，随应用版本管理 | 提供稳定能力、配对交互、会话命令、状态事件和错误模型 | 部署目标 iOS 26.0；定位运行时当前要求 iOS 27+，iOS 26 真机能力未验证 | 自有代码；接口见 [架构](architecture.md) |
 | `idevice` | 已固定 `e98264c4194e6980173c576ac79a58adce95492b`，附 Aurora MIT 补丁 | iOS Swift 包装层通过 C FFI 接入 Rust 的设备开发者服务 | 上游没有在已核对 README 中给出可直接照搬的本项目系统兼容矩阵；需验证 iOS 27.0.1 | MIT；[作者仓库](https://github.com/jkcoxson/idevice) |
 | LocalDevVPN | 外部安装依赖；验收记录安装版本，当前商店页面为 1.3.0 | 为 iOS 原型提供本地网络隧道；不是 Flutter 插件，也不直接修改 GPS | 商店声明 iOS ≥14.0；本项目仍按 iOS 27.0.1 单独验证 | 商店分发的软件，未据此确认源码复用许可；[作者商店页面](https://apps.apple.com/us/app/localdevvpn/id6755608044)、[Locus 接入说明](https://github.com/ChrisMack32/Locus) |
 

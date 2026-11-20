@@ -18,7 +18,7 @@ Type-safe native session management with a pinned MIT idevice runtime.
   s.frameworks = 'Security', 'Network', 'CoreLocation'
   s.libraries = 'resolv'
   s.dependency 'Flutter'
-  s.platform = :ios, '27.0'
+  s.platform = :ios, '26.0'
 
   # Flutter.framework does not contain a i386 slice.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }

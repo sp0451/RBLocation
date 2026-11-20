@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "location_bridge",
     platforms: [
-        .iOS("27.0")
+        .iOS("26.0")
     ],
     products: [
         .library(name: "location-bridge", targets: ["location_bridge"])

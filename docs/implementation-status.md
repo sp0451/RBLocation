@@ -36,6 +36,8 @@ xcodebuild -workspace ios/Runner.xcworkspace -scheme Runner \
   CODE_SIGNING_ALLOWED=NO
 ```
 
+以上 Simulator 构建记录是在 deployment target 为 27.0 时产生。本次将工程目标降为 26.0 后，设备 Debug 包构建通过且生成的 Runner.app 标注 `MinimumOSVersion` 为 26.0；当前已提交的 Rust XCFramework 对象仍标注 `minos 27.0`，需用 `native/idevice/scripts/build-ios.sh` 重建后才能确认原生静态库也以 26.0 为目标。定位引擎运行时仍要求 iOS 27+。
+
 ## 运行与真机验收
 
 根目录 `flutter pub get` 后，通过 `flutter run -d <device-id>` 在明确选择的手机运行。应用不会启动后自动重放位置。签名安装与操作手机由测试人员主动执行。

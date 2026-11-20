@@ -39,7 +39,7 @@ touch "$source_dir/ffi/build.rs"
 mkdir -p "$stage_dir/Headers"
 
 export CARGO_TARGET_DIR="$build_dir/target"
-export IPHONEOS_DEPLOYMENT_TARGET=27.0
+export IPHONEOS_DEPLOYMENT_TARGET=26.0
 export RUSTFLAGS="--remap-path-prefix=$repo_dir=clocation-source --remap-path-prefix=$build_dir=clocation-build"
 cargo_home_dir=${CARGO_HOME:-"$HOME/.cargo"}
 RUSTFLAGS="$RUSTFLAGS --remap-path-prefix=$cargo_home_dir=clocation-cargo"

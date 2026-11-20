@@ -6,7 +6,7 @@ iPhone 用户入口：[iOS 使用说明](docs/ios-user-guide.md)，包含首次�
 
 已实现手动 WGS84 输入、设备准备、配对交互、连接、设置、停止，以及独立的命令与定位观测面板。Android 使用系统模拟位置和前台服务；iOS 使用本机 Remote Pairing、外部 LocalDevVPN 与固定版本 idevice Rust 库。
 
-工具链基线：Flutter 3.44.2 / Dart 3.12.2、Android API 24+、Xcode 27 / iOS 27.0+。Android 已在 Samsung SM-G990U2 / Android 12 通过单点设置、Google Maps 观测和停止恢复的[真机测试](docs/validation/2026-10-20-android-mock-location.md)。iPhone 16 Pro / iOS 27.0.1 已通过 Mac 辅助设置上海、北京及清除恢复，微信 8.0.79 位置选择页生效；用户随后反馈安装 LocalDevVPN 后手机端测试成功。[Mac 真机记录](docs/validation/2026-10-21-ios-mac-location.md)、[手机端用户反馈](docs/validation/2026-10-21-ios-user-feedback.md)。完整状态见 [实现状态](docs/implementation-status.md)。
+工具链基线：Flutter 3.44.2 / Dart 3.12.2、Android API 24+、Xcode 27 / iOS deployment target 26.0。iOS 26 可安装目标尚未完成真机验证；当前 iOS 定位引擎的本机配对与连接仍要求 iOS 27+。Android 已在 Samsung SM-G990U2 / Android 12 通过单点设置、Google Maps 观测和停止恢复的[真机测试](docs/validation/2026-10-20-android-mock-location.md)。iPhone 16 Pro / iOS 27.0.1 已通过 Mac 辅助设置上海、北京及清除恢复，微信 8.0.79 位置选择页生效；用户随后反馈安装 LocalDevVPN 后手机端测试成功。[Mac 真机记录](docs/validation/2026-10-21-ios-mac-location.md)、[手机端用户反馈](docs/validation/2026-10-21-ios-user-feedback.md)。完整状态见 [实现状态](docs/implementation-status.md)。
 
 ```sh
 flutter pub get
